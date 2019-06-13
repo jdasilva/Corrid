@@ -19,12 +19,14 @@
 using System.Collections.Generic;
 using System.Threading;
 
-namespace Corrid
+namespace Corrid.Internal
 {
-    public class DefaultCorridContext : CorridContext
+    public class DefaultCorridContext : CorridContextBase
     {
         readonly List<ICorridContextEventHandler> _eventHandlers = new List<ICorridContextEventHandler>();
         readonly AsyncLocal<LocalCorridContext> _context = new AsyncLocal<LocalCorridContext>();
+
+        public override string Id => _context.Value.Id;
 
         public override void BeginExecutionScope()
         {
@@ -57,6 +59,13 @@ namespace Corrid
         public void AddEventHandler(ICorridContextEventHandler eventHandler)
         {
             _eventHandlers.Add(eventHandler);
+        }
+
+        class LocalCorridContext
+        {
+            internal string RootId { get; set; }
+            internal string IncomingId { get; set; }
+            internal string Id { get; set; }
         }
     }
 }

@@ -24,7 +24,7 @@
 using System;
 using System.Threading;
 
-namespace Corrid
+namespace Corrid.Internal
 {
     public static class IdGenerator
     {

@@ -16,12 +16,18 @@
 
 #endregion
 
-namespace Corrid
+// Created by Jamie da Silva on 6/12/2019 9:53 PM
+
+namespace Corrid.Internal
 {
-    class LocalCorridContext
+    public abstract class CorridContextBase : ICorridContext, ICorridContextUpdater
     {
-        internal string RootId { get; set; }
-        internal string IncomingId { get; set; }
-        internal string Id { get; set; }
+        public abstract string Id { get; }
+
+        public abstract void BeginExecutionScope();
+
+        public abstract void BeginExecutionScope(string incomingId);
+
+        public abstract void EndExecutionScope();
     }
 }

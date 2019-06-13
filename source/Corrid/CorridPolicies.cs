@@ -17,22 +17,23 @@
 #endregion
 
 using System;
+using Corrid.Internal;
 
 namespace Corrid
 {
     public static class CorridPolicies
     {
-        static Func<CorridContext> _corridContextFactory;
+        static Func<CorridContextBase> _corridContextFactory;
 
         static CorridPolicies()
         {
             _corridContextFactory = DefaultCorridContextFactory;
         }
 
-        public static CorridContext DefaultCorridContextFactory() => new DefaultCorridContext();
+        public static CorridContextBase DefaultCorridContextFactory() => new DefaultCorridContext();
 
-        public static void SetCorridContextFactory(Func<CorridContext> value) => _corridContextFactory = value;
+        public static void SetCorridContextFactory(Func<CorridContextBase> value) => _corridContextFactory = value;
 
-        public static CorridContext CreateCorridContext() => _corridContextFactory();
+        public static CorridContextBase CreateCorridContext() => _corridContextFactory();
     }
 }

@@ -16,18 +16,16 @@
 
 #endregion
 
+using Corrid.Internal;
+
 namespace Corrid
 {
-    public abstract class CorridContext : ICorridContextUpdater
+    public static class CorridContext
     {
-        static CorridContext _default;
+        static CorridContextBase _default;
 
-        public static CorridContext Default => _default ??= CorridPolicies.CreateCorridContext();
+        public static CorridContextBase Default => _default ??= CorridPolicies.CreateCorridContext();
 
-        public abstract void BeginExecutionScope();
-
-        public abstract void BeginExecutionScope(string incomingId);
-
-        public abstract void EndExecutionScope();
+        public static string Id => Default.Id;
     }
 }
