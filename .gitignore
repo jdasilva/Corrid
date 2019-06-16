@@ -1,4 +1,6 @@
 .vs/
 output/
 temp/
+tools/*
+!tools/packages.config
 *.user

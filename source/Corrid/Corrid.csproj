@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Description>A library to facilitate creating high-performance correlation ids for cross-process request tracing.</Description>
+    <PackageTags>Corrid;Correlation;Diagnostics</PackageTags>
     <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net46'">
-    <PackageReference Include="System.Net.Http" Version="4.*" />
+    <PackageReference Include="System.Net.Http" Version="[4.0.0,)" />
   </ItemGroup>
 
 </Project>
