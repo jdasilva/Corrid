@@ -32,6 +32,16 @@ Task("Build")
    DotNetCoreBuild(".", settings);
 });
 
+Task("Test")
+.Does(() => {
+   var settings = new DotNetCoreTestSettings
+   {
+      NoBuild = true,
+      Configuration = configuration
+   };
+   DotNetCoreTest(".", settings);
+});
+
 Task("Pack")
 .Does(() => {
    var settings = new DotNetCorePackSettings
@@ -45,6 +55,7 @@ Task("Pack")
 Task("Default")
 .IsDependentOn("Restore")
 .IsDependentOn("Build")
+.IsDependentOn("Test")
 .IsDependentOn("Pack");
 
 RunTarget(target);

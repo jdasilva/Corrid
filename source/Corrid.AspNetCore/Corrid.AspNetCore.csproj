@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>Integration for ASP.NET Core with Corrid library to facilitate creating high-performance correlation ids for cross-process request tracing.</Description>
     <PackageTags>Corrid;Correlation;Diagnostics;AspNetCore</PackageTags>
-    <TargetFrameworks>netstandard2.0;net46</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

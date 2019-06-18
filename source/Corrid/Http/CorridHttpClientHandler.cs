@@ -22,12 +22,10 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Corrid.HttpClient
+namespace Corrid.Http
 {
     public class CorridHttpClientHandler : DelegatingHandler
     {
-        const string XCorrelationIdHeader = "X-Correlation-ID";
-
         readonly ICorridContext _context;
 
         public CorridHttpClientHandler() : this(CorridContext.Default) { }
@@ -46,7 +44,7 @@ namespace Corrid.HttpClient
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            request.Headers.Add(XCorrelationIdHeader, _context.Id);
+            request.Headers.Add(CorridConstants.XCorrelationIdHeader, _context.Id);
             return base.SendAsync(request, cancellationToken);
         }
     }

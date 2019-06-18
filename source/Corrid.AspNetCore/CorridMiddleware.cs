@@ -23,7 +23,6 @@ namespace Corrid.AspNetCore
 {
     public class CorridMiddleware
     {
-        const string XCorrelationIdHeader = "X-Correlation-ID";
         readonly ICorridContextUpdater _contextUpdater;
         readonly RequestDelegate _next;
 
@@ -38,7 +37,7 @@ namespace Corrid.AspNetCore
 
         public async Task Invoke(HttpContext context)
         {
-            if (context.Request.Headers.TryGetValue(XCorrelationIdHeader, out var values))
+            if (context.Request.Headers.TryGetValue(CorridConstants.XCorrelationIdHeader, out var values))
                 _contextUpdater.BeginExecutionScope(values.ToString());
             else
                 _contextUpdater.BeginExecutionScope();
